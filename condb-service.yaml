@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: condb-service
+  namespace: <INPUT NAMESPACE HERE>
+spec:
+  selector:
+    app: condb
+  ports:
+    - port: 8888
+      targetPort: 8888

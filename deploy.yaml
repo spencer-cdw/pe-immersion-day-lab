@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: condb
+  namespace: <INPUT NAMESPACE HERE>
+spec:
+  selector:
+    matchLabels:
+      app: condb
+  template:
+    metadata:
+      labels:
+        app: condb
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: condb
+        image: registry.gitlab.com/ignw1/dvs-code/pedemo/rhos-pe-immersion-day/condb:v1.1
+        imagePullPolicy: Always
+        
+        resources:
+          requests:
+            cpu: 200m
+            memory: 128Mi
+          limits:
+            cpu: 400m
+            memory: 256Mi
+      imagePullSecrets:
+        - name: gitlab-pull-secret

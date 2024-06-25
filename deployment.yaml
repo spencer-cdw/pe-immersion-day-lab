@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webby
+  namespace: <INPUT NAMESPACE HERE>
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webby
+  template:
+    metadata:
+      labels:
+        app: webby
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: webby
+        image: registry.gitlab.com/ignw1/dvs-code/pedemo/rhos-pe-immersion-day/webby:v1.1
+        imagePullPolicy: Always
+        env:
+          - name: NAMESPACE
+            value: "<INPUT NAMESPACE HERE>"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
+      imagePullSecrets:
+        - name: gitlab-pull-secret
