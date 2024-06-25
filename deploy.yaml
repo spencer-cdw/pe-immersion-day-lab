@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: condb
-  namespace: <INPUT NAMESPACE HERE>
+  namespace: pedemo-ylq3-user6
 spec:
   selector:
     matchLabels:

@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webby
-  namespace: <INPUT NAMESPACE HERE>
+  namespace: pedemo-ylq3-user6
 spec:
   replicas: 3
   selector:
@@ -21,7 +21,7 @@ spec:
         imagePullPolicy: Always
         env:
           - name: NAMESPACE
-            value: "<INPUT NAMESPACE HERE>"
+            value: pedemo-ylq3-user6
         resources:
           requests:
             cpu: 100m

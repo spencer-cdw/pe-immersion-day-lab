@@ -3,7 +3,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: webby
-  namespace: <INPUT NAMESPACE HERE>
+  namespace: pedemo-ylq3-user6
 spec:
   tls:
     termination: edge

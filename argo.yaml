@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops-webby
+  namespace: openshift-gitops
+spec:
+  destination:
+    server: https://api.ocp-hpe02.pedemo.ignw.io:6443' 1
+  project: default
+  source:
+    directory:
+      include: container-deploy.yaml 2
+      jsonnet: {}
+    path: .
+    repoURL: https://github.com/spencer-cdw/pe-immersion-day-lab.git 3
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
