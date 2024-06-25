@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+name: id-prem-webby-vm
+namespace: openshift-gitops
+spec:
+destination:
+  name: ""
+  namespace: ""
+  server: "https://api.ocp-hpe02.pedemo.ignw.io:6443"
+source:
+  path: "./immersion-day-example-configs"
+  repoURL: "https://github.com/spencer-cdw/pe-immersion-day-lab.git"
+  targetRevision: HEAD
+  directory:
+    include: pe-vm-deploy.yaml
+    jsonnet: {}
+sources: []
+project: default
+syncPolicy:
+  syncOptions:
+    - CreateNamespace=false
+  automated:
+    prune: true
+    selfHeal: true
