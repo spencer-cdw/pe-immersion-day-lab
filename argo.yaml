@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gitops-webby
+  name: gitops-webby-spencer
   namespace: openshift-gitops
 spec:
   destination:
